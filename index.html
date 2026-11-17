@@ -3,57 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>飞的日常</title>
+  <meta name="theme-color" content="#f7f3e9">
+  <meta name="description" content="闻日光：记所读，写所念，游所爱，归漾泉。">
+  <title>闻日光</title>
   <style>
+    :root {
+      --paper: #f7f3e9;
+      --paper-deep: #efe8d8;
+      --ink: #302f2a;
+      --muted: #817c70;
+      --line: #ded7c7;
+      --gold: #c8963b;
+      --serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: #292820;
-      background: #f8f7f3;
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
-        "Microsoft YaHei", sans-serif;
-      line-height: 1.8;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
     }
-    main { width: min(720px, 88%); margin: 80px auto; }
-    header { margin-bottom: 64px; }
-    h1 { margin: 0; font-family: Georgia, serif; font-size: 42px; }
-    .subtitle { color: #77766f; margin-top: 8px; }
-    nav { margin-top: 22px; color: #77766f; font-size: 14px; }
-    nav a { color: inherit; text-decoration: none; margin-right: 18px; }
-    article {
-      padding: 28px 0;
-      border-top: 1px solid #e4e1d8;
-    }
-    time, .tag { color: #89877f; font-size: 13px; }
-    h2 { margin: 8px 0; font-size: 23px; }
-    article p { color: #55544d; margin-bottom: 0; }
-    footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #e4e1d8;
-      color: #89877f;
-      font-size: 13px;
+    a { color: inherit; }
+    .page { width: min(760px, calc(100% - 48px)); margin: 0 auto; }
+    .hero { padding: 52px 0 42px; }
+    .mark { display: block; width: 184px; height: 112px; margin: 0 0 24px -8px; }
+    .eyebrow { margin: 0 0 2px; color: var(--gold); font-size: 12px; letter-spacing: .22em; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+    h1 { margin: 0; font-size: clamp(38px, 7vw, 52px); line-height: 1.25; letter-spacing: .08em; }
+    .intro { margin: 10px 0 0; color: var(--muted); font-family: var(--serif); font-size: 17px; letter-spacing: .04em; }
+    .topline { height: 1px; background: var(--line); }
+    nav { display: flex; flex-wrap: wrap; gap: 10px 28px; padding: 15px 0 17px; }
+    nav a { text-decoration: none; font-family: var(--serif); font-size: 16px; transition: color .2s; }
+    nav a:hover, .text-link:hover { color: var(--gold); }
+    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 34px 0 14px; }
+    .section-head h2 { margin: 0; font-size: 22px; letter-spacing: .08em; }
+    .section-head span { color: var(--muted); font-size: 12px; letter-spacing: .12em; }
+    .shelves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+    .shelf { min-height: 134px; padding: 20px 22px 21px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+    .shelf:nth-child(odd) { margin-right: 24px; }
+    .shelf:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+    .shelf-name { display: flex; align-items: baseline; gap: 10px; }
+    .shelf-name strong { font-family: var(--serif); font-size: 25px; font-weight: 500; letter-spacing: .12em; }
+    .shelf-name small { color: var(--gold); font-size: 12px; letter-spacing: .08em; }
+    .shelf p { margin: 6px 0 0; color: var(--muted); font-family: var(--serif); font-size: 14px; line-height: 1.75; }
+    .entry { padding: 18px 0 21px; border-top: 1px solid var(--line); }
+    .entry-meta { display: flex; gap: 12px; color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+    .entry h3 { margin: 5px 0 3px; font-size: 19px; }
+    .entry p { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 14px; }
+    .empty-note { padding: 16px 0 22px; color: var(--muted); font-family: var(--serif); font-size: 14px; }
+    .about { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .about p { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 14px; }
+    footer { padding: 24px 0 38px; color: #9a9385; font-family: var(--serif); font-size: 12px; letter-spacing: .08em; }
+    .accent { color: var(--gold); }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 36px, 760px); }
+      .hero { padding-top: 34px; }
+      .mark { width: 158px; height: 98px; }
+      .shelves { grid-template-columns: 1fr; }
+      .shelf, .shelf:nth-child(odd), .shelf:nth-child(even) { min-height: auto; margin: 0; padding: 15px 0; border-left: 0; }
+      .section-head { margin-top: 27px; }
+      nav { gap: 8px 22px; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>飞的日常</h1>
-      <div class="subtitle">写生活，写思考，也写那些不想忘记的小事。</div>
-      <nav><a href="#文章">文章</a><a href="#关于">关于</a></nav>
+  <main class="page">
+    <header class="hero">
+      <svg class="mark" viewBox="0 0 240 145" role="img" aria-label="月亮、向右行驶的小船与水波">
+        <path d="M187 8a43 43 0 1 0 35 67A38 38 0 0 1 187 8Z" fill="#c8963b"/>
+        <path d="M20 103h30l12 8h113c-15 17-37 25-67 25H56c-16-5-28-16-36-33Z" fill="#302f2a"/>
+        <path d="M59 108c4-19 13-31 27-35h37c12 0 22 13 27 35" fill="none" stroke="#302f2a" stroke-width="5" stroke-linecap="round"/>
+        <path d="M69 88h72M65 98h83M80 76v30M101 73v34M122 73v34M142 82v24" fill="none" stroke="#f7f3e9" stroke-width="2.5"/>
+        <path d="M20 104h44M172 111c18-8 37-8 56 0M12 133c25-8 48-8 71 0 21 7 42 7 63 0" fill="none" stroke="#302f2a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p class="eyebrow">一页一日，一程一景</p>
+      <h1>闻日光</h1>
+      <p class="intro">记所读，写所念，游所爱，归漾泉。</p>
     </header>
 
-    <section id="文章">
-      <article>
-        <time>2026 年 11 月 17 日</time>
-        <h2>这里是我的第一篇文章</h2>
-        <div class="tag">生活 · 随笔</div>
-        <p>欢迎来到我的小小角落。以后我会在这里记录生活里的发现、感受和想法。</p>
-      </article>
+    <div class="topline"></div>
+    <nav aria-label="栏目导航">
+      <a href="#空">空</a><a href="#念">念</a><a href="#游">游</a><a href="#漾泉">漾泉</a>
+    </nav>
+
+    <section aria-labelledby="columns-title">
+      <div class="section-head"><h2 id="columns-title">拾光小记</h2><span>四处安放日常</span></div>
+      <div class="shelves">
+        <a class="shelf" id="空" href="#空内容">
+          <div class="shelf-name"><strong>空</strong><small>书页之间</small></div>
+          <p>读过几页，记下偶然照进来的光。</p>
+        </a>
+        <a class="shelf" id="念" href="#念内容">
+          <div class="shelf-name"><strong>念</strong><small>写下所想</small></div>
+          <p>若提笔便能写尽风情，若你一开口他便能懂。</p>
+        </a>
+        <a class="shelf" id="游" href="#游内容">
+          <div class="shelf-name"><strong>游</strong><small>身体与远方</small></div>
+          <p>献给太阳、月亮、草地，我和你们。</p>
+        </a>
+        <a class="shelf" id="漾泉" href="#漾泉内容">
+          <div class="shelf-name"><strong>漾泉</strong><small>故乡来信</small></div>
+          <p>昙花香，月色荒；莫回首，裹行囊。</p>
+        </a>
+      </div>
     </section>
 
-    <footer id="关于">这是飞的个人博客。慢慢写，慢慢更新。</footer>
+    <section class="category-list" id="空内容" aria-labelledby="book-title"><div class="section-head"><h2 id="book-title">空</h2><span>书页之间</span></div><p class="empty-note">读过几页，记下偶然照进来的光。</p></section>
+    <section class="category-list" id="念内容" aria-labelledby="thought-title"><div class="section-head"><h2 id="thought-title">念</h2><span>写下所想</span></div><p class="empty-note">若提笔便能写尽风情，若你一开口他便能懂。</p></section>
+    <section class="category-list" id="游内容" aria-labelledby="travel-title"><div class="section-head"><h2 id="travel-title">游</h2><span>身体与远方</span></div><p class="empty-note">献给太阳、月亮、草地，我和你们。</p></section>
+    <section class="category-list" id="漾泉内容" aria-labelledby="home-title"><div class="section-head"><h2 id="home-title">漾泉</h2><span>故乡来信</span></div><p class="empty-note">昙花香，月色荒；莫回首，裹行囊。</p></section>
+
+    <section aria-labelledby="recent-title">
+      <div class="section-head"><h2 id="recent-title">最近写下</h2><span>慢慢来</span></div>
+      <div class="empty-note">还没有新的记录。等一段路、一本书，或一个想留下来的瞬间。</div>
+    </section>
+
+    <section class="about" aria-label="关于闻日光">
+      <p>童心躲在雨鞋里面 <span class="accent">·</span> 闻日光，记日常。</p>
+    </section>
+    <footer>愿每次出发，都还有月光与水波。</footer>
   </main>
 </body>
 </html>
