@@ -1,132 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3e9">
-  <meta name="description" content="闻日光：记所读，写所念，游所爱，归漾泉。">
-  <title>闻日光</title>
-  <style>
-    :root {
-      --paper: #f7f3e9;
-      --paper-deep: #efe8d8;
-      --ink: #302f2a;
-      --muted: #817c70;
-      --line: #ded7c7;
-      --gold: #c8963b;
-      --serif: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
-      --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.85;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; }
-    .page { width: min(760px, calc(100% - 48px)); margin: 0 auto; }
-    .hero { padding: 52px 0 42px; }
-    .mark { display: block; width: 184px; height: 112px; margin: 0 0 24px -8px; }
-    .eyebrow { margin: 0 0 2px; color: var(--gold); font-size: 12px; letter-spacing: .22em; }
-    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
-    h1 { margin: 0; font-size: clamp(38px, 7vw, 52px); line-height: 1.25; letter-spacing: .08em; }
-    .intro { margin: 10px 0 0; color: var(--muted); font-family: var(--serif); font-size: 17px; letter-spacing: .04em; }
-    .topline { height: 1px; background: var(--line); }
-    nav { display: flex; flex-wrap: wrap; gap: 10px 28px; padding: 15px 0 17px; }
-    nav a { text-decoration: none; font-family: var(--serif); font-size: 16px; transition: color .2s; }
-    nav a:hover, .text-link:hover { color: var(--gold); }
-    .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 34px 0 14px; }
-    .section-head h2 { margin: 0; font-size: 22px; letter-spacing: .08em; }
-    .section-head span { color: var(--muted); font-size: 12px; letter-spacing: .12em; }
-    .shelves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
-    .shelf { min-height: 134px; padding: 20px 22px 21px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
-    .shelf:nth-child(odd) { margin-right: 24px; }
-    .shelf:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
-    .shelf-name { display: flex; align-items: baseline; gap: 10px; }
-    .shelf-name strong { font-family: var(--serif); font-size: 25px; font-weight: 500; letter-spacing: .12em; }
-    .shelf-name small { color: var(--gold); font-size: 12px; letter-spacing: .08em; }
-    .shelf p { margin: 6px 0 0; color: var(--muted); font-family: var(--serif); font-size: 14px; line-height: 1.75; }
-    .entry { padding: 18px 0 21px; border-top: 1px solid var(--line); }
-    .entry-meta { display: flex; gap: 12px; color: var(--muted); font-size: 12px; letter-spacing: .04em; }
-    .entry h3 { margin: 5px 0 3px; font-size: 19px; }
-    .entry p { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 14px; }
-    .empty-note { padding: 16px 0 22px; color: var(--muted); font-family: var(--serif); font-size: 14px; }
-    .about { margin-top: 32px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .about p { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 14px; }
-    footer { padding: 24px 0 38px; color: #9a9385; font-family: var(--serif); font-size: 12px; letter-spacing: .08em; }
-    .accent { color: var(--gold); }
-    @media (max-width: 560px) {
-      .page { width: min(100% - 36px, 760px); }
-      .hero { padding-top: 34px; }
-      .mark { width: 158px; height: 98px; }
-      .shelves { grid-template-columns: 1fr; }
-      .shelf, .shelf:nth-child(odd), .shelf:nth-child(even) { min-height: auto; margin: 0; padding: 15px 0; border-left: 0; }
-      .section-head { margin-top: 27px; }
-      nav { gap: 8px 22px; }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <header class="hero">
-      <svg class="mark" viewBox="0 0 240 145" role="img" aria-label="月亮、向右行驶的小船与水波">
-        <path d="M187 8a43 43 0 1 0 35 67A38 38 0 0 1 187 8Z" fill="#c8963b"/>
-        <path d="M20 103h30l12 8h113c-15 17-37 25-67 25H56c-16-5-28-16-36-33Z" fill="#302f2a"/>
-        <path d="M59 108c4-19 13-31 27-35h37c12 0 22 13 27 35" fill="none" stroke="#302f2a" stroke-width="5" stroke-linecap="round"/>
-        <path d="M69 88h72M65 98h83M80 76v30M101 73v34M122 73v34M142 82v24" fill="none" stroke="#f7f3e9" stroke-width="2.5"/>
-        <path d="M20 104h44M172 111c18-8 37-8 56 0M12 133c25-8 48-8 71 0 21 7 42 7 63 0" fill="none" stroke="#302f2a" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-      <p class="eyebrow">一页一日，一程一景</p>
-      <h1>闻日光</h1>
-      <p class="intro">记所读，写所念，游所爱，归漾泉。</p>
-    </header>
-
-    <div class="topline"></div>
-    <nav aria-label="栏目导航">
-      <a href="#空">空</a><a href="#念">念</a><a href="#游">游</a><a href="#漾泉">漾泉</a>
-    </nav>
-
-    <section aria-labelledby="columns-title">
-      <div class="section-head"><h2 id="columns-title">拾光小记</h2><span>四处安放日常</span></div>
-      <div class="shelves">
-        <a class="shelf" id="空" href="#空内容">
-          <div class="shelf-name"><strong>空</strong><small>书页之间</small></div>
-          <p>读过几页，记下偶然照进来的光。</p>
-        </a>
-        <a class="shelf" id="念" href="#念内容">
-          <div class="shelf-name"><strong>念</strong><small>写下所想</small></div>
-          <p>若提笔便能写尽风情，若你一开口他便能懂。</p>
-        </a>
-        <a class="shelf" id="游" href="#游内容">
-          <div class="shelf-name"><strong>游</strong><small>身体与远方</small></div>
-          <p>献给太阳、月亮、草地，我和你们。</p>
-        </a>
-        <a class="shelf" id="漾泉" href="#漾泉内容">
-          <div class="shelf-name"><strong>漾泉</strong><small>故乡来信</small></div>
-          <p>昙花香，月色荒；莫回首，裹行囊。</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="category-list" id="空内容" aria-labelledby="book-title"><div class="section-head"><h2 id="book-title">空</h2><span>书页之间</span></div><p class="empty-note">读过几页，记下偶然照进来的光。</p></section>
-    <section class="category-list" id="念内容" aria-labelledby="thought-title"><div class="section-head"><h2 id="thought-title">念</h2><span>写下所想</span></div><p class="empty-note">若提笔便能写尽风情，若你一开口他便能懂。</p></section>
-    <section class="category-list" id="游内容" aria-labelledby="travel-title"><div class="section-head"><h2 id="travel-title">游</h2><span>身体与远方</span></div><p class="empty-note">献给太阳、月亮、草地，我和你们。</p></section>
-    <section class="category-list" id="漾泉内容" aria-labelledby="home-title"><div class="section-head"><h2 id="home-title">漾泉</h2><span>故乡来信</span></div><p class="empty-note">昙花香，月色荒；莫回首，裹行囊。</p></section>
-
-    <section aria-labelledby="recent-title">
-      <div class="section-head"><h2 id="recent-title">最近写下</h2><span>慢慢来</span></div>
-      <div class="empty-note">还没有新的记录。等一段路、一本书，或一个想留下来的瞬间。</div>
-    </section>
-
-    <section class="about" aria-label="关于闻日光">
-      <p>童心躲在雨鞋里面 <span class="accent">·</span> 闻日光，记日常。</p>
-    </section>
-    <footer>愿每次出发，都还有月光与水波。</footer>
-  </main>
-</body>
-</html>
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f3e9"><meta name="description" content="闻日光：记所读，写所念，游所爱，归漾泉。"><title>闻日光</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f7f3e9'/%3E%3Cpath d='M8 42q20-7 48 0M17 37h34L37 48H23zM23 36V19l19 17' fill='%23302f2a' stroke='%23302f2a' stroke-width='2'/%3E%3Cpath d='M43 10a14 14 0 1 0 12 22 15 15 0 0 1-12-22' fill='%23c8963b'/%3E%3C/svg%3E">
+<style>
+:root{--paper:#f7f3e9;--paper2:#eee7d8;--ink:#302f2a;--muted:#817c70;--line:#ded7c7;--gold:#c8963b;--serif:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.page{width:min(1240px,calc(100% - 80px));margin:auto}.hero{display:flex;align-items:center;gap:34px;padding:50px 0 38px}.mark{width:150px;height:150px;flex:none}.eyebrow{margin:0;color:var(--gold);font-size:12px;letter-spacing:.22em}h1,h2,h3{font-family:var(--serif);font-weight:500}h1{margin:0;font-size:clamp(42px,5vw,62px);letter-spacing:.1em;line-height:1.25}.intro{margin:10px 0 0;color:var(--muted);font:17px var(--serif);letter-spacing:.06em}.rule{height:1px;background:var(--line)}nav{display:flex;gap:14px;align-items:center;padding:16px 0 20px;font:18px var(--serif);letter-spacing:.08em}nav .dot{color:var(--gold);font-size:13px}nav a:hover,.back:hover{color:var(--gold)}.head{display:flex;justify-content:space-between;align-items:baseline;margin:40px 0 16px}.head h2{margin:0;font-size:24px;letter-spacing:.08em}.head span{color:var(--muted);font-size:12px;letter-spacing:.12em}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card{min-width:0}.art{height:210px;background:var(--paper2);border:1px solid var(--line);overflow:hidden;transition:.25s}.art svg{width:100%;height:100%;display:block}.card:hover .art{transform:translateY(-4px);box-shadow:0 12px 28px #302f2a18}.label{display:flex;justify-content:space-between;align-items:baseline;padding:10px 2px}.label b{font:24px var(--serif);font-weight:500;letter-spacing:.12em}.label small{font-size:12px;color:var(--muted)}.recent{margin-top:48px}.entry{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--line)}time{font-size:12px;color:var(--muted)}.entry h3{margin:0;font-size:19px}.entry p{margin:3px 0 0;color:var(--muted);font:14px var(--serif)}.empty{padding:17px 0;border-top:1px solid var(--line);color:var(--muted);font:15px var(--serif)}footer{text-align:center;margin-top:58px;padding:22px 0 34px;border-top:1px solid var(--line);color:var(--muted);font:15px var(--serif);letter-spacing:.08em}.hide{display:none}.category{min-height:48vh}.back{display:inline-block;margin:22px 0;color:var(--muted);font:14px var(--serif)}.ctitle{display:flex;gap:16px;align-items:baseline;margin:16px 0 24px}.ctitle h2{margin:0;font:38px var(--serif);letter-spacing:.12em}.ctitle span{color:var(--muted);font-size:13px}.catart{max-width:560px;height:260px;margin-bottom:28px;border:1px solid var(--line)}.catart svg{width:100%;height:100%}@media(max-width:850px){.page{width:calc(100% - 40px)}.hero{gap:22px;padding:36px 0 28px}.mark{width:110px;height:110px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.art{height:180px}}@media(max-width:520px){.page{width:calc(100% - 32px)}.hero{gap:15px;padding:28px 0 22px}.mark{width:76px;height:76px}h1{font-size:38px}.intro{font-size:14px;letter-spacing:0}nav{gap:9px;font-size:16px}.head{margin-top:30px}.art{height:142px}.label b{font-size:21px}.entry{grid-template-columns:88px 1fr;gap:10px}.ctitle h2{font-size:32px}}
+</style></head><body><main class="page">
+<header class="hero" id="hero"><svg class="mark" viewBox="0 0 180 180" role="img" aria-label="小船、月亮与水波"><circle cx="90" cy="90" r="87" fill="#eee7d8"/><path d="M114 27a42 42 0 1 0 39 64 42 42 0 0 1-39-64" fill="#c8963b"/><path d="M20 119q42-13 87 0m-49 10q43-11 94 1m-115 9q28-7 54 1" fill="none" stroke="#817c70" stroke-width="2"/><path d="M36 106h82L91 130H55z" fill="#302f2a"/><path d="M59 103V68l43 35M64 75h30m-30 10h30" fill="none" stroke="#302f2a" stroke-width="4"/></svg><div><p class="eyebrow">一个慢慢更新的小站</p><h1>闻日光</h1><p class="intro">记所读，写所念，游所爱，归漾泉。</p></div></header>
+<div class="rule"></div><nav aria-label="栏目"><a href="?section=空">空</a><span class="dot">·</span><a href="?section=念">念</a><span class="dot">·</span><a href="?section=游">游</a><span class="dot">·</span><a href="?section=漾泉">漾泉</a></nav><div class="rule"></div>
+<section id="home"><div class="head"><h2>栏目</h2><span>四处停靠，慢慢记下</span></div><div class="grid" id="grid"></div><div class="head recent"><h2>最近写下</h2><span>RECENT NOTES</span></div><div id="recent"></div></section>
+<section id="cat" class="category hide"><a class="back" href="./">← 回到首页</a><div class="ctitle"><h2 id="ctitle"></h2><span id="ccount"></span></div><div id="catart" class="catart"></div><div id="catlist"></div></section><footer>童心躲在雨鞋里面</footer></main>
+<script>
+const A=[['空','<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="260" fill="#e8dfca"/><circle cx="370" cy="70" r="38" fill="#d4a64f"/><path d="M0 190Q130 150 260 190t260-5v75H0" fill="#d8c8a6"/><rect x="175" y="78" width="160" height="112" rx="3" fill="#6f685b"/><rect x="187" y="88" width="136" height="91" fill="#f7f3e9"/><path d="M255 88v91M199 105h42m-42 13h42m-42 13h38" stroke="#b8ad98" stroke-width="3"/><text x="28" y="232" fill="#554f45" font-size="19" font-family="serif">在书页之间，留一盏灯</text></svg>'],['念','<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="260" fill="#eee4d5"/><path d="M0 205q130-35 260 0t260-8v63H0" fill="#dfd0b9"/><rect x="140" y="42" width="240" height="155" rx="3" fill="#fbf8ef" stroke="#c9bda8" stroke-width="2" transform="rotate(-4 260 120)"/><path d="M177 82h166m-168 22h165m-168 22h140m-143 22h156" stroke="#c6b9a4" stroke-width="2"/><path d="M301 163q18-31 34 0q-16 18-34 0" fill="#c8963b"/><text x="28" y="235" fill="#554f45" font-size="20" font-family="serif">写一点心里话</text></svg>'],['游','<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="260" fill="#e4e8df"/><circle cx="405" cy="65" r="30" fill="#d6a94e"/><path d="M0 153q120-65 240 0t280-15v122H0" fill="#aab9a7"/><path d="M0 190q120-28 240 0t280-7m-520 30q120-28 240 0t280-7" fill="none" stroke="#748b82" stroke-width="4"/><circle cx="185" cy="163" r="24" fill="none" stroke="#393d38" stroke-width="4"/><circle cx="258" cy="163" r="24" fill="none" stroke="#393d38" stroke-width="4"/><path d="m185 163 27-43 29 43h-56l25-34h35l13 34m-46-43h-15" fill="none" stroke="#393d38" stroke-width="4"/><text x="28" y="239" fill="#44534a" font-size="20" font-family="serif">把身体交给风</text></svg>'],['漾泉','<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="260" fill="#e9e2d3"/><path d="m0 151 120-83 82 68 100-85 118 99 100-63v173H0" fill="#9b9a82"/><path d="m0 180 132-69 110 85 96-67 182 65v74H0" fill="#777f70"/><path d="M0 211q75-22 150 0t150 0 220 0m-520 22q75-22 150 0t150 0 220 0" fill="none" stroke="#d6b874" stroke-width="4"/><text x="28" y="46" fill="#f7f3e9" font-size="22" font-family="serif">县花香 · 月色荒</text></svg>']];
+const data=A.map(([name,art])=>({name,art,count:0}));document.getElementById('grid').innerHTML=data.map(c=>'<a class="card" href="?section='+encodeURIComponent(c.name)+'"><div class="art">'+c.art+'</div><div class="label"><b>'+c.name+'</b><small>'+c.count+' 篇</small></div></a>').join('');document.getElementById('recent').innerHTML='<div class="empty">还没有新的记录。等你写下第一篇，它就会出现在这里。</div>';let s=new URLSearchParams(location.search).get('section'),c=data.find(x=>x.name===s);if(c){document.getElementById('hero').classList.add('hide');document.querySelector('nav').classList.add('hide');document.getElementById('home').classList.add('hide');document.getElementById('cat').classList.remove('hide');document.title=c.name+' · 闻日光';document.getElementById('ctitle').textContent=c.name;document.getElementById('ccount').textContent=c.count+' 篇记录';document.getElementById('catart').innerHTML=c.art;document.getElementById('catlist').innerHTML='<div class="empty">这里还空着，等一段关于「'+c.name+'」的记录。</div>'}
+</script></body></html>
