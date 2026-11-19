@@ -1,0 +1,44 @@
+/* One frame and heading system for all content pages. The homepage remains separate. */
+:root{--content-width:1120px;--reading-width:800px;--page-title-size:44px;--detail-title-size:36px;--gold:#96701f;--muted:#827a6d;--line:#dbd3c4}
+.page{width:min(var(--content-width),calc(100% - 64px))}
+.page>header,body[data-view="sports"] .page>header{height:72px;flex:none;border-bottom:1px solid var(--line)}
+.page>header .logo,.page>header .logo-link img,body[data-view="sports"] .page>header .logo{width:64px;height:64px;object-fit:contain}
+.page>header nav [aria-current]{color:var(--gold)}
+.page>header nav{font-size:18px;gap:22px;letter-spacing:0;font-weight:600}
+.page>main,body[data-view="sports"] .page>main{padding-top:22px}
+.page main h1{font-size:var(--page-title-size);font-weight:600;line-height:1.3;letter-spacing:.08em;margin:0}
+.page main .content-heading h1{font-size:var(--page-title-size)}
+.page main .record-head h1,.page main .article h1{font-size:var(--detail-title-size);line-height:1.4;letter-spacing:.04em}
+.article,.article-page .toolbar,.prose-record,.record{width:100%;max-width:var(--reading-width);margin-inline:auto}
+.viewport-page #ride-view{max-width:none}
+.content-heading,.content-title-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+.page .content-heading{padding-top:0;margin-bottom:24px}
+.heading-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;min-width:0}
+.page-kind{font-size:14px;line-height:1.7;letter-spacing:.03em;color:var(--muted);font-weight:400}
+.content-heading .lead,.intro p,.atlas-head p{font-size:16px;color:var(--muted);margin:9px 0 0}
+.content-title-row>.back,.content-heading .back,.content-heading .back-link,.record-topline .back-link{flex:none;white-space:nowrap;font-size:13px;color:var(--muted);font-weight:400;letter-spacing:0}
+.content-heading .back{margin:0}
+.heading-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+.content-context{font-size:12px;color:var(--muted);line-height:1.7;margin:0 0 9px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.content-context span[aria-hidden]{color:#b8ae9d}
+.intro{padding-top:0}.intro h1{font-size:var(--page-title-size)}
+.page .sports-head>div{display:block}.page .sports-head .heading-title{display:flex}
+.page .sports-head .overview-note{display:block;margin-top:9px;font-size:12px}
+.page>footer{padding:18px 0 20px;font-size:12px;letter-spacing:.08em;border-top:1px solid var(--line)}
+.viewport-page .page>footer{padding:8px 0}
+@media(max-width:850px){.page{width:calc(100% - 40px)}}
+@media(max-width:600px){
+ :root{--page-title-size:35px;--detail-title-size:28px}
+ .page{width:calc(100% - 32px)}
+ .page>header,body[data-view="sports"] .page>header{height:64px}
+ .page>header .logo,.page>header .logo-link img,body[data-view="sports"] .page>header .logo{width:54px;height:54px}
+ .page>header nav [aria-current]{color:var(--gold)}
+.page>header nav{font-size:15px;gap:11px}
+ .page>main,body[data-view="sports"] .page>main{padding-top:20px}
+ .page .content-heading{gap:12px;margin-bottom:20px}
+ .heading-title{gap:4px 11px}.page-kind{font-size:12px}
+ .content-heading .lead,.intro p,.atlas-head p{font-size:15px;margin-top:7px}
+ .content-title-row{gap:12px;align-items:flex-start}
+ .content-title-row>.back,.content-heading .back,.content-heading .back-link,.record-topline .back-link{font-size:12px}
+ .content-context{font-size:11px;margin-bottom:8px}
+}
