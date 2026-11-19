@@ -10,6 +10,7 @@
 .page main .content-heading h1{font-size:var(--page-title-size)}
 .page main .record-head h1,.page main .article h1{font-size:var(--detail-title-size);line-height:1.4;letter-spacing:.04em}
 .article,.article-page .toolbar,.prose-record,.record{width:100%;max-width:var(--reading-width);margin-inline:auto}
+.content img,#article-content img{display:block;width:auto;height:auto;max-width:100%;max-height:75vh;max-height:75svh;margin:1.25em auto}
 .viewport-page #ride-view{max-width:none}
 .content-heading,.content-title-row{display:flex;align-items:baseline;justify-content:space-between;gap:20px}
 .page .content-heading{padding-top:0;margin-bottom:24px}
