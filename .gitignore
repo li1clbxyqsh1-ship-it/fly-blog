@@ -1,0 +1,8 @@
+/private/
+/previews/
+/dist/
+__pycache__/
+.venv/
+*.pyc
+.env
+.env.*

@@ -1,0 +1,151 @@
+{
+  "publish_mode": "simple",
+  "media_folder": "uploads",
+  "public_folder": "/fly-blog/uploads",
+  "media_libraries": {
+    "all": {
+      "max_file_size": 1048576,
+      "filename_template": "{{year}}{{month}}{{day}}-{{uuid_short}}",
+      "transformations": {
+        "raster_image": {
+          "format": "webp",
+          "quality": 82,
+          "width": 2048,
+          "height": 2048
+        }
+      }
+    }
+  },
+  "collections": [
+    {
+      "name": "articles",
+      "label": "文章",
+      "label_singular": "文章",
+      "folder": "content/articles",
+      "create": true,
+      "extension": "json",
+      "format": "json",
+      "slug": "{{fields.id}}",
+      "identifier_field": "title",
+      "summary": "{{title}} · {{date}}",
+      "preview_path": "posts/{{fields.id}}.html",
+      "fields": [
+        {
+          "name": "id",
+          "label": "记录编号",
+          "widget": "uuid",
+          "hint": "自动生成，用来保持链接稳定。"
+        },
+        {
+          "name": "category",
+          "label": "栏目",
+          "widget": "select",
+          "default": "nian",
+          "options": [
+            {
+              "label": "念",
+              "value": "nian"
+            },
+            {
+              "label": "空",
+              "value": "kong"
+            },
+            {
+              "label": "游",
+              "value": "you"
+            },
+            {
+              "label": "漾泉",
+              "value": "yangquan"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": "标题",
+          "widget": "string"
+        },
+        {
+          "name": "date",
+          "label": "记录日期",
+          "widget": "datetime",
+          "date_format": "YYYY-MM-DD",
+          "time_format": false,
+          "format": "YYYY-MM-DD"
+        },
+        {
+          "name": "summary",
+          "label": "简介",
+          "widget": "text",
+          "required": false,
+          "hint": "可以留空，发布时自动从正文提取。"
+        },
+        {
+          "name": "cover",
+          "label": "封面照片",
+          "widget": "image",
+          "required": false
+        },
+        {
+          "name": "meta",
+          "label": "小记",
+          "widget": "string",
+          "required": false,
+          "hint": "例如：晴。可以不填。"
+        },
+        {
+          "name": "body",
+          "label": "正文",
+          "widget": "markdown"
+        }
+      ]
+    },
+    {
+      "name": "photos",
+      "label": "照片日记",
+      "label_singular": "照片日记",
+      "folder": "content/photos",
+      "create": true,
+      "extension": "json",
+      "format": "json",
+      "slug": "{{fields.id}}",
+      "identifier_field": "caption",
+      "summary": "{{caption}} · {{date}}",
+      "preview_path": "photos/#diary",
+      "fields": [
+        {
+          "name": "id",
+          "label": "记录编号",
+          "widget": "uuid",
+          "hint": "自动生成，用来保持链接稳定。"
+        },
+        {
+          "name": "image",
+          "label": "一张照片",
+          "widget": "image"
+        },
+        {
+          "name": "caption",
+          "label": "留一句话",
+          "widget": "text"
+        },
+        {
+          "name": "date",
+          "label": "记录日期",
+          "widget": "datetime",
+          "date_format": "YYYY-MM-DD",
+          "time_format": false,
+          "format": "YYYY-MM-DD"
+        },
+        {
+          "name": "sample",
+          "label": "示例照片",
+          "widget": "boolean",
+          "default": false,
+          "required": false,
+          "hint": "自己的照片保持关闭。"
+        }
+      ]
+    }
+  ]
+}
