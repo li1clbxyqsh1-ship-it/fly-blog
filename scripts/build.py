@@ -95,6 +95,8 @@ def build(root,out):
             shutil.copytree(root/folder,out/folder,ignore=shutil.ignore_patterns('*.md','.*'))
     articles,photos=load_content(root)
     journal=(root/'journal.html').read_text(encoding='utf-8')
+    frame_marker='/* One frame and heading system for all content pages. The homepage remains separate. */'
+    journal=replace_once(journal,re.escape(frame_marker)+r'.*?(?=</style>)',lambda _:(root/'content-layout.css').read_text(encoding='utf-8'),'统一页面样式')
     pattern=r'(<script id="journal-data" type="application/json">)(.*?)(</script>)'
     match=re.search(pattern,journal,re.S)
     if not match:raise ValueError('找不到已有运动数据')
