@@ -1,8 +1,8 @@
 {
   "id": "sample-light",
+  "image": "/fly-blog/photos/assets/light.jpg",
   "caption": "今天的光，刚好落在这里。",
   "date": "2026-11-16",
-  "image": "/fly-blog/photos/assets/light.jpg",
-  "sample": true,
+  "sample": false,
   "source": "https://unsplash.com/photos/uMNO8s_bDVs"
 }
